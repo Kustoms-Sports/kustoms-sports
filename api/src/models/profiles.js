@@ -5,7 +5,7 @@ sequelize.define('profiles', {
 
 
 id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER ,
     autoIncrement: true,
     primaryKey: true,
     allowNull: false
