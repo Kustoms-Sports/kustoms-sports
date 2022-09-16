@@ -2,24 +2,29 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link ,useParams} from "react-router-dom";
-import { getdetailid } from "../redux/actions";
+import { getDetailId, getStock } from "../redux/actions";
 import { useState } from "react";
 
 
 
 
-const ImageXDataProduct = (props) =>{
+const ImageXDataProduct = () =>{
     const details = useSelector((state) => state.details);
-    const imagenes= useSelector((state) => state.images)
+    const imagenes= useSelector((state) => state.images);
+    const stock= useSelector((state) => state.stock);
+    console.log(details)
+    console.log(stock)
     const [ordenimg, setOrdenimg] = useState("")
     const params = useParams()
     const id = params.id
-    // const deta = details.infoprod[0]
+    // const name = details.name[0].toUpperCase() + details.name.substring(1)
+    
     const dispatch = useDispatch()
     useEffect(()=>{
-       dispatch(getdetailid(id))
+       dispatch(getDetailId(id))
+       dispatch(getStock(id))
     },[dispatch,id])
-    console.log(ordenimg)
+    
     const data = {
         clotheType: "shirt",
         brand:"adidas",
@@ -64,7 +69,16 @@ const ImageXDataProduct = (props) =>{
             <div className=" flex">Sport: {details.sport}</div>   
             <div className=" flex"> Collection: {details.collection}</div>
             </div>
-          <div className="flex">Size</div>
+          <div className="flex flex-col">
+             <div className="flex">Size</div>
+             <div className="flex flex-row  ">
+             {stock?.map(el=>{
+              return(
+                <div className=" border-[1px] text-[20px] w-[65px] h-[50px] pt-[9px] place-items-center border-indigo-500/50">{el.size}</div>
+              )
+             })}
+              </div>
+            </div>
           <button
             type="button "
             className="flex break-inside bg-[#2ea44f] text-main-light border-2 border-transparent  px-6 py-3 mb-4 w-fit h-fit pt-1 pb-1 mt-[200px]"
