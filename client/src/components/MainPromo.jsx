@@ -11,10 +11,8 @@ const MainPromo = () => {
 
     useEffect(() => {
         dispatch(clearCategory())
-        dispatch(getByCategory('collection', 'qatar'))
+        dispatch(getByCategory('collection', 'Qatar'))
     }, [])
-
-
 
     return (
         <article className='w-full'>

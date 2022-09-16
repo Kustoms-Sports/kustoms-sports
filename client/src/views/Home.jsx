@@ -3,8 +3,19 @@ import { Link } from "react-router-dom"
 import hombre from '../assets/hombre.jpg'
 import mujer from '../assets/mujer.jpg'
 import ninos from '../assets/ninos.jpg'
+import { useDispatch, useSelector } from "react-redux"
+import { getByDate } from "../redux/actions"
+
+import { useEffect } from 'react'
 
 const Home = () => {
+    const dispatch = useDispatch()
+
+    const newest = useSelector(state => state.productByDate)
+    useEffect(() => {
+        //dispatch(clearCategory())
+        dispatch(getByDate())
+    }, [])
     return (
 
         <div className="mb-10 mt-16 min-h-screen">
@@ -29,7 +40,7 @@ const Home = () => {
             </section>
             <section className="my-36">
                 <h2 className="my-5 text-3xl text-main-dark dark:text-main-light ">Ultimas novedades</h2>
-                <Carrousel />
+                <Carrousel collection={newest} />
             </section>
         </div>
 

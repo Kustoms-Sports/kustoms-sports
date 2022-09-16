@@ -6,6 +6,7 @@ const initialState={
     details:[],
     images:[],
     productByCategory:[],
+    productByDate:[],
 }
 
 export const rootReducer=(state=initialState, action)=>{
@@ -30,6 +31,11 @@ export const rootReducer=(state=initialState, action)=>{
             return{
                 ...state,
                 productByCategory:action.payload
+            }
+        case types.GET_BY_DATE:
+            return{
+                ...state,
+                productByDate:action.payload
             }
         case types.CLEAR_CATEGORY:
             return{
