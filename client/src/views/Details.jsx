@@ -8,12 +8,12 @@ import { Carrousel } from "../components";
 const Details = () => {
   
   return (
-    <div className="flex flex-col  bg-main-light w-11/12 mx-auto">
+    <div className="flex flex-col  bg-main-light ">
       <ImageXDataProduct />
       <SelectoresProduct/>
-      <div className="flex flex-col  mt-[20px]">
+      <div className="flex flex-col ml-16 mt-[20px]">
         
-        <Carrousel/>
+        
       </div>
     </div>
   );
