@@ -4,7 +4,6 @@ const productsId = require('./get-products-id.js')
 const productsquery = require('./get-products-query.js')
 const productsdate = require('./get-products-date.js')
 const productsnavbar = require('./get-products-navbar.js')
-const createuser = require ('./post-usuario.js')
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -15,13 +14,11 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 // router.use('/', dogRutas )
-router.use('/user', createuser)
 router.use('/navbar', productsnavbar)
 router.use('/date', productsdate)
 router.use('/', chargeproducts)
 router.use('/', productsId)
 router.use('/', productsquery)
-
 
 
 
