@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const URL="http://localhost:3001/"
+const URL="/"
 
 export const types={
     CHANGE_THEME:"CHANGE_THEME",
@@ -26,7 +26,7 @@ export const changeTheme=(payload)=>{
 export function getDetailId(id) {
     return async function (dispatch) {
       try {
-        var json = await axios.get(`http://localhost:3001/${id}`);
+        var json = await axios.get(`${URL}${id}`);
         return dispatch({
           type: types.GET_DETAILS,
           payload: json.data[0],
@@ -39,7 +39,7 @@ export function getDetailId(id) {
 export function getStock(id) {
     return async function (dispatch) {
       try {
-        var json = await axios.get(`http://localhost:3001/${id}`);
+        var json = await axios.get(`${URL}${id}`);
         return dispatch({
           type: types.GET_STOCK,
           payload: json.data[1],
@@ -107,7 +107,7 @@ export function getStock(id) {
   export const createnewuser = (payload) => {
     return async function (dispatch) {
       try {
-        var json = await axios.post(`http://localhost:3001/user`, payload);
+        var json = await axios.post(`${URL}user`, payload);
         return json
       } catch (error) {
         console.log(error);
