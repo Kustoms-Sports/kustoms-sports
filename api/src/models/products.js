@@ -61,11 +61,12 @@ stock:{
 
 },
 price: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.DECIMAL,
     allowNull: false
 },
 promotion:{
-    type: DataTypes.FLOAT,
+    type: DataTypes.DECIMAL,
+    allowNull: false
 },
 visits:{
     type: DataTypes.INTEGER,

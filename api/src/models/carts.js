@@ -20,7 +20,7 @@ totalamount: {
 open: {
   
     type: DataTypes.BOOLEAN,
-    defaultValue: true,
+    defaultValue: false,
     allowNull: false
 },
 
