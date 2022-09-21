@@ -26,7 +26,10 @@ module.exports = (sequelize) => {
          allowNull: true,
          defaultValue: "https://cdn-icons-png.flaticon.com/512/1946/1946429.png"
         },
-      
+        profile:{
+         type: DataTypes.ENUM(['Admin','Client']),
+         defaultValue: 'Client'
+        },
        fidelity:{
            type: DataTypes.DECIMAL,
            allowNull: false, 

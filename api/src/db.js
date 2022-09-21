@@ -61,30 +61,33 @@ sequelize.models = Object.fromEntries(capsEntries);
 const {Products, Carts, Cartsdetails, Comments, Invoices, Profiles, Users, Paymentmethod } = sequelize.models;
 
 // Aca vendrian las relaciones
-Cartsdetails.belongsTo(Products)
-Products.hasMany(Cartsdetails)
+// Cartsdetails.belongsTo(Products)
+// Products.hasMany(Cartsdetails)
 
-Carts.hasMany(Cartsdetails)
-Cartsdetails.belongsTo(Carts)
+// Carts.hasMany(Cartsdetails)
+// Cartsdetails.belongsTo(Carts)
 
-Carts.hasMany(Users)
-Users.belongsTo(Carts)
+
+// Profiles.hasMany(Users)
+// Users.belongsTo(Profiles)
+
+// Users.hasMany(Invoices)
+// Invoices.belongsTo(Users)
+
+// Carts.hasOne(Invoices)
+// Invoices.belongsTo(Carts)
+
+// Paymentmethod.hasMany(Invoices)
+// Invoices.belongsTo(Paymentmethod)
+
+Users.hasMany(Carts)
+Carts.belongsTo(Users)
 
 Comments.hasMany(Users)
 Users.belongsTo(Comments)
 
-Profiles.hasMany(Users)
-Users.belongsTo(Profiles)
-
-Users.hasMany(Invoices)
-Invoices.belongsTo(Users)
-
-Carts.hasOne(Invoices)
-Invoices.belongsTo(Carts)
-
-Paymentmethod.hasMany(Invoices)
-Invoices.belongsTo(Paymentmethod)
-
+Carts.belongsToMany(Products, {through: "cartproducts"})
+Products.belongsToMany(Carts, {through: "cartproducts"})
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
