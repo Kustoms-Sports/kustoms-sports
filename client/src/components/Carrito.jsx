@@ -42,16 +42,16 @@ const Carrito = () => {
   return (
     <div>
       <div className="flex flex-col mt[100px]">
-        {dataBuy.length > 0 ?<div className=" flex ml-[200px] text-[30px] font-bold mt-[100px]">
+        {dataBuy.length > 0 ?<div className=" flex ml-[200px] dark:text-main-light text-[30px] font-bold mt-[100px]">
           TU CARRITO : {dataBuy.length} items 
         </div>:
-        <div className=" flex ml-[200px] text-[30px] font-bold mt-[100px]">
+        <div className=" flex ml-[200px] dark:text-main-light text-[30px] font-bold mt-[100px]">
         TU CARRITO ESTÁ VACÍO
       </div>}
         <div className=" flex flex-row gap-[300px] mb-[100px]">
           <div>
             <div className="flex flex-col ">
-              {data.totalamount === undefined || data.totalamount === 0 ?<div className="flex flex-col ml-[200px] items-start justify-items-start mt-[10px]"><p>Una vez que realices un pedido,aparecerá acá.</p><p>Podrías comenzar viendo nuestra nueva colección de <Link to="/categories/collection/Qatar" className="text-verde-dark font-bold">Qatar</Link></p></div>:dataBuy?.map((e) => {
+              {data.totalamount === undefined || data.totalamount === 0 ?<div className="flex flex-col ml-[200px] dark:text-main-light items-start justify-items-start mt-[10px]"><p>Una vez que realices un pedido,aparecerá acá.</p><p>Podrías comenzar viendo nuestra nueva colección de <Link to="/categories/collection/Qatar" className="text-verde-dark font-bold">Qatar</Link></p></div>:dataBuy?.map((e) => {
                 return (
                   <div className="flex flex-col gap-[50px] mt-[50px]">
                   <div className="flex flex- row border-[2px] ml-[200px] w-[700px] h-[250px]">
@@ -63,7 +63,7 @@ const Carrito = () => {
                         height="200px"
                       />
                     </div>
-                    <div className="flex flex-col ml-[10px] items-start gap-[15px]">
+                    <div className="flex dark:text-main-light flex-col ml-[10px] items-start gap-[15px]">
                       <h1 className="text-[20px] font-bold">{e.name}</h1>
                       <div>{e.collection}</div>
                       <div>{e.color}</div>

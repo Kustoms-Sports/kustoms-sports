@@ -156,7 +156,7 @@ const SelectoresProduct = () => {
                   <Modal open={isOpen} onClose={closer}>
                     {" "}
                     {/*este es children de Modal.jsx */}
-                    <div className="flex flex-flex row">
+                    <div className="flex dark:text-main-dark flex-flex row">
                       <label>Comentario:</label>
                       <input
                         className="border-[2px]  mr-[20px]"
