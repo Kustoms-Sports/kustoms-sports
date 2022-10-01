@@ -9,7 +9,12 @@ const PreviewCard = ({ data }) => {
             <>
                 <Link to={`/producto/${data.id}`} className={`min-w-[16.3rem] shadow-md h-72 ${loadedImage ? 'block' : 'hidden'}`}>
                     < div className='relative' >
-                        <img src={data.image[0]} onLoad={() => setLoadedImage(true)} alt="Imagen producto" className='w-full h-52 object-scale-down bg-main-light' />
+                        <div className="">
+                        <img src={data.image[0]} onLoad={() => setLoadedImage(true)} alt="Imagen producto" className='w-full h-52 object-scale-down bg-main-light  ' />
+                        
+
+
+                        </div>
                         {data.promotion > 0 ?
                         <div className='absolute bottom-1 left-1 flex flex-row items-center bg-main-light dark:bg-main-dark px-1'>
                             <span className='text-lg text-main-dark dark:text-main-light line-through'>$</span>

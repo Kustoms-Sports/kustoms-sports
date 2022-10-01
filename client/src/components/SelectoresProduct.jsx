@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MdIron, MdNotInterested } from "react-icons/md";
+import { HiBan } from "react-icons/hi";
 import { VscChevronUp, VscChevronDown } from "react-icons/vsc";
 import { GiWashingMachine } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
@@ -129,7 +130,7 @@ const SelectoresProduct = () => {
                   {isAuthenticated?
                   <div>
                     {allowed === "usuario baneado"? 
-                      <p className="font-bold text-red-dark">ESTAS BANEADO</p>
+                      <p className=" flex flex-row font-bold text-red-dark mt-[20px]">ESTAS BANEADO <HiBan className="text-[20px]"/></p>
                       : allowed === "User allowed" ?
                     <button
                     onClick={()=> setIsOpen(true)}
@@ -137,7 +138,7 @@ const SelectoresProduct = () => {
                     className="flex bottom-0 right-0 ml-[1000px] border rounded  text-[20px] p-1 mr-[10px]font-bold h-[30px]"
                   >
                     Comentar
-                  </button>:<p>Debe comprar el producto para poder comentar</p>} 
+                  </button>:<p className="mt-[20px]">Debe comprar el producto para poder comentar</p>} 
                   </div>:<div className="flex ">
             <p>
               Para poder realizar un comentario,debe{" "}

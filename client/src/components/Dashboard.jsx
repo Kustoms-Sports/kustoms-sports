@@ -9,6 +9,7 @@ import AllComentarios from "./AllComentarios";
 import BarChart from "./BarChart";
 import DashUserTable from "./DashUserTable"
 import logoLargoLight from '../assets/logoLargoLight.png'
+import logoLargo from '../assets/logoLargo.png'
 
 const Dashboard = () => {
   const [productos, setProductos] = useState(false);
@@ -17,7 +18,7 @@ const Dashboard = () => {
   const [errorImg, setErrorImg] = useState(false);
   const [modificar, setModificar] = useState(false);
   const [show, setShow] = useState("x")
-
+  const [logo, setLogo] = useState(false);
 
   const dispatch = useDispatch();
   const [addproduct, setAddProduct] = useState({
@@ -121,6 +122,9 @@ const Dashboard = () => {
     if(modificar === true){
       setModificar(!modificar)
     }
+    if(logo === false){
+      setLogo(!logo)
+     }
   }
   function handleCom (){
     if (show.length){ 
@@ -129,6 +133,9 @@ const Dashboard = () => {
       setState(false)
       setProductos(false)
     }
+    if(logo === false){
+      setLogo(!logo)
+     }
     
   }
   function handleGraf (){
@@ -138,7 +145,10 @@ const Dashboard = () => {
       setState(false)
       setProductos(false)
     }
-     
+    if(logo === false){
+      setLogo(!logo)
+     }
+    
   }
   function handleUser (){
     if (show.length){
@@ -147,6 +157,9 @@ const Dashboard = () => {
       setState(false)
       setProductos(false)
     }
+    if(logo === false){
+      setLogo(!logo)
+     }
   }
   function handleChange(e) {
     setAddProduct({
@@ -239,6 +252,10 @@ const Dashboard = () => {
      if(state === true){
        setState(!state)
      }
+     if(logo === false){
+      setLogo(!logo)
+     }
+     
   }
 
   return (
@@ -464,7 +481,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="w-[1000px] h-[1009px] border-[1px]">
+      <div className="w-[1000px] h-[940px] border-[1px] bg-gris-light  ">
+        {logo === false?<div  className="flex items-center justify-center"><img src={logoLargo} className="  w-[600px] h-[200px]"/></div>:<div>
         {state !== false && (
           <div class="max-w-2xl mx-auto bg-white p-16">
             <form>
@@ -723,6 +741,7 @@ const Dashboard = () => {
               <BarChart/>
             </div>
           }
+        </div>}
       </div>
     </div>
   );

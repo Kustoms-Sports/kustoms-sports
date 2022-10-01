@@ -12,6 +12,9 @@ import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "./Login";
 import swal from "sweetalert2";
+import { BsFillCartPlusFill } from "react-icons/bs";
+
+
 
 const ImageXDataProduct = () => {
   const { isAuthenticated, user } = useAuth0();
@@ -213,17 +216,19 @@ const ImageXDataProduct = () => {
         </div>
         {errors !== false && <p className=" flex mt-0 text-[red]">Porfavor seleccione una talla</p>}
         {isAuthenticated ? (
+          <div className=" absolute top-[750px]">
           <button
             onClick={postuserClick}
             type="button "
-            className="flex break-inside bg-[#2ea44f] text-main-light border-2 border-transparent  px-6 py-3 mb-4 w-fit h-fit pt-1 pb-1 mt-[200px]"
+            className="break-inside bg-[#2ea44f] text-main-light border-2 border-transparent  px-6 py-3 mb-4 w-fit h-fit pt-1 pb-1 top-[900px]"
           >
-            <div className="m-auto">
-              <div className="flex items-center justify-start flex-1 space-x-4 #f8fafc">
-                <span className="font-medium ">Agregar al Carrito</span>
+            <div className="  m-auto top-[700px]">
+              <div className="flex  flex-row items-center justify-start flex-1 space-x-4 #f8fafc">
+                <span className="font-medium flex flex-row">Agregar al Carrito <BsFillCartPlusFill className="text-[20px] ml-[10px]"/></span>
               </div>
             </div>
           </button>
+          </div>
         ) : (
           <div className="flex flex-col">
             <p>
