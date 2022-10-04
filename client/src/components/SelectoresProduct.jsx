@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { getAllowed, getComments, postComment } from "../redux/actions";
 import Modal from "../views/ModalComments";
 import { useAuth0 } from "@auth0/auth0-react";
+import swal from "sweetalert2";
 
 const SelectoresProduct = () => {
   const { isAuthenticated, user } = useAuth0();
@@ -67,17 +68,36 @@ const SelectoresProduct = () => {
     dispatch(getComments(details.name, details.gender));  
   }
   function handleComment() {
-    
     get()
-    if(input.text !== ""){
-    dispatch(postComment(input));
-     
-    setInput({
-      ...input,
-      text: "",
-      rank:""
-    });}
-    
+    //me fijo si ya tiene un comentario en el mismo producto
+    let commented = false
+    for (let i = 0; i < User.length; i++) {
+      if (User[i].email === user.email) {
+        commented = true
+        break
+      } 
+    }
+
+    if (commented) { //si el usuario ya hizo un comentario
+      swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Sólo se admite un comentario por usuario en un producto",
+        showConfirmButton: false,
+        timer: 2000,
+      }) 
+      setIsOpen(false)
+    } 
+    else { //si el usuario no hizo comentario
+      if(input.text !== ""){
+        dispatch(postComment(input));
+        setInput({
+          ...input,
+          text: "",
+          rank:""
+        });
+      }
+    }
   }
   function handleChangue(e) {
     setInput({
@@ -85,7 +105,7 @@ const SelectoresProduct = () => {
       [e.target.name]: e.target.value,
     });
   }
-  console.log(input);
+
   return (
     <div className=" flex flex-col mt-[100px] ml-16 dark:bg-main-dark">
       <ul className="flex flex-col text-justify dark:bg-main-dark">
@@ -118,9 +138,10 @@ const SelectoresProduct = () => {
 
                 <div className="flex flex-col gap-[90px] ml-[30px] mt-[15px]">
                   {comments.map((e) => {
-                    return <div><p>{e[0]}</p>
-                                <p className="rating"><input type="radio" name="rating-2" className="mask mask-star-2 bg-success " checked />{e[1]}</p>
-                                </div>;
+                    return <div>
+                              <p>{e[0]}</p>
+                              <p className="rating"><input type="radio" name="rating-2" className="mask mask-star-2 bg-success " defaultChecked />{e[1]}</p>
+                            </div>;
                   })}
                 </div>
               </div>
